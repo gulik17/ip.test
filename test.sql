@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Авг 09 2020 г., 20:30
+-- Время создания: Авг 10 2020 г., 22:00
 -- Версия сервера: 10.4.13-MariaDB
 -- Версия PHP: 7.3.20
 
@@ -50,7 +50,10 @@ INSERT INTO `videos` (`id`, `youtube_id`, `shortcode`, `video_name`) VALUES
 (9, 1, 'RDYg4unQo6I', 'Отполированная плазма. KDE Plasma 5.19. Основные нововведения и Личные мысли. Панель как в Windows'),
 (10, 1, 'Sg9WPDWqEHw', 'Microsoft купит Linux? Ядро 5.7, Kodachi 7, Raspberry Pi 8Gb, Transmission 3.0, подарок от Microsoft'),
 (11, 1, 'Mp6JIx5vKXU', 'Linux новости: Роскомнадзор добрался до Open Source. Elementary OS 5.1.4, Inkscape 1.0, PopOS 20.04'),
-(12, 1, 'HX0LN3Zpovk', 'Linux на VDS/VPS. Виртуализация KVM/OpenVZ. Поднимаем сайт, Игровой сервер, Удаленный рабочий стол');
+(12, 1, 'HX0LN3Zpovk', 'Linux на VDS/VPS. Виртуализация KVM/OpenVZ. Поднимаем сайт, Игровой сервер, Удаленный рабочий стол'),
+(13, 2, 'uuwSf4mIUDc', 'Традиционный Бородатый Стрим / Июль 2020'),
+(14, 2, '0DlRJjLHrCU', 'ВЫГОРАНИЕ, Эмоциональный ИНТЕЛЛЕКТ, Синдром САМОЗВАНЦА / Интервью с психологом из айтишников'),
+(15, 2, 'HVrYnPW5pi0', 'Как программируют графику в играх / Интервью с Graphics Engineer из Wargaming');
 
 -- --------------------------------------------------------
 
@@ -96,7 +99,7 @@ ALTER TABLE `youtubes`
 -- AUTO_INCREMENT для таблицы `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `youtubes`
