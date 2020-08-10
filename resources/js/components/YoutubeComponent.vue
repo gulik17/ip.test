@@ -10,15 +10,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" v-else>
-                        <div class="col-md-12">
-                            <div class="title m-b-md">{{ info.channel_name }}</div>
-                        </div>
-                        <div class="col-md-4 mb-5" v-for="(video, idx) in info.videos" :key="idx">
-                            <a href="#" data-toggle="modal" data-target="#videoModal" @click.prevent="modalShow(video.shortcode, video.video_name)">
-                                <img :src="'http://i3.ytimg.com/vi/'+video.shortcode+'/maxresdefault.jpg'" class="img-fluid" alt="">
-                                <div class="h5 mt-4">{{video.video_name}}</div>
-                            </a>
+                    <div v-else>
+                        <div class="row" v-for="(item, idx) in info" :key="idx">
+                            <div class="col-md-12">
+                                <div class="title m-b-md">{{ item.channel_name }}</div>
+                            </div>
+                            <div class="col-md-3 mb-5" v-for="(video, idx) in item.videos" :key="idx">
+                                <a href="#" data-toggle="modal" data-target="#videoModal" @click.prevent="modalShow(video.shortcode, video.video_name)">
+                                    <img :src="'http://i3.ytimg.com/vi/'+video.shortcode+'/maxresdefault.jpg'" class="img-fluid" alt="">
+                                    <div class="h5 mt-4 grid-video-renderer">{{video.video_name}}</div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -55,7 +57,7 @@
         },
         mounted() {
             axios
-                .get('http://ip-test.loc/api/channel/1?limit=9')
+                .get('http://ip-test.loc/api/channel?limit=8')
                 .then(response => (
                     this.info = response.data,
                     this.loader = false
@@ -72,3 +74,25 @@
         }
     }
 </script>
+
+<style>
+html, body {
+    font-family: sans-serif;
+    font-size: 10px;}
+a:hover {
+    text-decoration: none;}
+.grid-video-renderer {
+    display: -webkit-box;
+    max-height: calc(2 * 1.6rem);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.6rem;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333;}
+</style>

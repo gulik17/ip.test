@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::get('channel', 'Api\Channel\ChannelController@channel');
+Route::get('channel', 'Api\Channel\ChannelController@index');
 Route::get('channel/{id}', 'Api\Channel\ChannelController@channelById');
 
 Route::get('video', 'Api\Video\VideoController@video');
