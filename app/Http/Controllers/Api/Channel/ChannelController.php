@@ -8,6 +8,10 @@ use App\Models\Videos;
 
 class ChannelController extends Controller {
     public function index() {
+        /*$channel = Youtubes::with(['videos' => function ($query) {
+            $query->limit(8);
+        }])->get();*/
+
         $channel = Youtubes::get();
         if ( is_null($channel) ) {
             return response()->json(['error' => true, 'message' => 'Not found'], 404);
@@ -24,8 +28,7 @@ class ChannelController extends Controller {
         if ( is_null($channel) ) {
             return response()->json(['error' => true, 'message' => 'Not found'], 404);
         }
-        $limit = (isset($_REQUEST['limit'])) ? (int) $_REQUEST['limit'] : 8;
-        $channel->videos = Videos::where('youtube_id', $channel->id)->limit($limit)->get();
+        $channel->videos = Videos::where('youtube_id', $channel->id)->get();
         return response()->json($channel, 200);
     }
 }

@@ -20,15 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d70e881-324a-4823-988e-6bf1394cb3ab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Channel/ChannelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Channel/ChannelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Video/VideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Video/VideoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Youtubes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Youtubes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/YoutubeComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/YoutubeComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.sql" beforeDir="false" afterPath="$PROJECT_DIR$/test.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,6 +188,8 @@
       <updated>1596955860104</updated>
       <workItem from="1596955862135" duration="29015000" />
       <workItem from="1597086352811" duration="3148000" />
+      <workItem from="1597174043619" duration="605000" />
+      <workItem from="1597188838147" duration="4882000" />
     </task>
     <servers />
   </component>
@@ -207,6 +206,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="285" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596966355793">

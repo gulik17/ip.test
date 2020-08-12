@@ -18,8 +18,15 @@
                             <div class="col-md-3 mb-5" v-for="(video, idx) in item.videos" :key="idx">
                                 <a href="#" data-toggle="modal" data-target="#videoModal" @click.prevent="modalShow(video.shortcode, video.video_name)">
                                     <img :src="'http://i3.ytimg.com/vi/'+video.shortcode+'/maxresdefault.jpg'" class="img-fluid" alt="">
-                                    <div class="h5 mt-4 grid-video-renderer">{{video.video_name}}</div>
+                                    <div class="h5 mt-4 grid-video-renderer" :title="video.video_name">{{video.video_name}}</div>
                                 </a>
+                            </div>
+                            <div class="col-md-12" v-if="item.videos.length === 8">
+                                <button class="btn-load-more btn btn-primary" type="button" disabled v-if="btnLoader">
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Загрузка...
+                                </button>
+                                <button @click="loadMore(item.id)" class="btn-load-more btn btn-primary" v-else>Загрузить все</button>
                             </div>
                         </div>
                     </div>
@@ -50,6 +57,7 @@
         data() {
             return {
                 loader: true,
+                btnLoader: false,
                 info: null,
                 modalTitle: '',
                 modalVideo: ''
@@ -70,6 +78,19 @@
             modalShow: function (shortcode, video_name) {
                 this.modalVideo = 'https://www.youtube.com/embed/'+shortcode+'?autoplay=1&mute=1'
                 this.modalTitle = video_name
+            },
+            loadMore: function (id) {
+                this.btnLoader = true
+                axios
+                    .get('http://ip-test.loc/api/channel/'+id)
+                    .then(response => (
+                        this.btnLoader = false,
+                        this.info = this.info.map(o => {
+                            if (o.id === response.data.id)
+                                return response.data
+                            return o
+                        })
+                    ))
             }
         }
     }
@@ -95,4 +116,6 @@ a:hover {
     letter-spacing: normal;
     text-align: left;
     color: #333;}
+.btn-load-more {
+    font-size: 14px;}
 </style>

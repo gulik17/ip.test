@@ -1955,10 +1955,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       loader: true,
+      btnLoader: false,
       info: null,
       modalTitle: '',
       modalVideo: ''
@@ -1978,6 +1986,17 @@ __webpack_require__.r(__webpack_exports__);
     modalShow: function modalShow(shortcode, video_name) {
       this.modalVideo = 'https://www.youtube.com/embed/' + shortcode + '?autoplay=1&mute=1';
       this.modalTitle = video_name;
+    },
+    loadMore: function loadMore(id) {
+      var _this2 = this;
+
+      this.btnLoader = true;
+      axios.get('http://ip-test.loc/api/channel/' + id).then(function (response) {
+        return _this2.btnLoader = false, _this2.info = _this2.info.map(function (o) {
+          if (o.id === response.data.id) return response.data;
+          return o;
+        });
+      });
     }
   }
 });
@@ -6416,7 +6435,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nhtml, body {\n    font-family: sans-serif;\n    font-size: 10px;}\na:hover {\n    text-decoration: none;}\n.grid-video-renderer {\n    display: -webkit-box;\n    max-height: calc(2 * 1.6rem);\n    -webkit-box-orient: vertical;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: normal;\n    -webkit-line-clamp: 2;\n    font-size: 1.4rem;\n    font-weight: 600;\n    line-height: 1.6rem;\n    letter-spacing: normal;\n    text-align: left;\n    color: #333;}\n", ""]);
+exports.push([module.i, "\nhtml, body {\n    font-family: sans-serif;\n    font-size: 10px;}\na:hover {\n    text-decoration: none;}\n.grid-video-renderer {\n    display: -webkit-box;\n    max-height: calc(2 * 1.6rem);\n    -webkit-box-orient: vertical;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: normal;\n    -webkit-line-clamp: 2;\n    font-size: 1.4rem;\n    font-weight: 600;\n    line-height: 1.6rem;\n    letter-spacing: normal;\n    text-align: left;\n    color: #333;}\n.btn-load-more {\n    font-size: 14px;}\n", ""]);
 
 // exports
 
@@ -38268,7 +38287,8 @@ var render = function() {
                                 _c(
                                   "div",
                                   {
-                                    staticClass: "h5 mt-4 grid-video-renderer"
+                                    staticClass: "h5 mt-4 grid-video-renderer",
+                                    attrs: { title: video.video_name }
                                   },
                                   [_vm._v(_vm._s(video.video_name))]
                                 )
@@ -38276,7 +38296,47 @@ var render = function() {
                             )
                           ]
                         )
-                      })
+                      }),
+                      _vm._v(" "),
+                      item.videos.length === 8
+                        ? _c("div", { staticClass: "col-md-12" }, [
+                            _vm.btnLoader
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn-load-more btn btn-primary",
+                                    attrs: { type: "button", disabled: "" }
+                                  },
+                                  [
+                                    _c("span", {
+                                      staticClass:
+                                        "spinner-border spinner-border-sm",
+                                      attrs: {
+                                        role: "status",
+                                        "aria-hidden": "true"
+                                      }
+                                    }),
+                                    _vm._v(
+                                      "\n                                Загрузка...\n                            "
+                                    )
+                                  ]
+                                )
+                              : _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn-load-more btn btn-primary",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.loadMore(item.id)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Загрузить все")]
+                                )
+                          ])
+                        : _vm._e()
                     ],
                     2
                   )

@@ -16,7 +16,7 @@ class Youtubes extends Model {
     ];
 
     public function videos() {
-        return $this->hasMany('App\Models\Videos','youtube_id', 'id');
+        return $this->hasMany('App\Models\Videos', 'youtube_id', 'id');
     }
 
 }
